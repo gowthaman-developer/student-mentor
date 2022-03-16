@@ -1,16 +1,14 @@
 const mongoose = require("mongoose");
+
 const schema = mongoose.Schema;
 
 const dbConnect = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://bala1681:Bala123@cluster0.pvwzm.mongodb.net/eduHub?retryWrites=true&w=majority",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        autoIndex: true,
-      }
-    );
+    await mongoose.connect(process.env.url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      autoIndex: true,
+    });
     console.log("DB Connected");
   } catch (e) {
     console.log(e.message, "error in connecting db");
